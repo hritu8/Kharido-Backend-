@@ -70,7 +70,7 @@ exports.logout = async (req, res) => {
 };
 
 exports.checkAuth = async (req, res) => {
-  console.log("check", req.user);
+  
   if (req.user) {
     res.json(req.user);
   } else {

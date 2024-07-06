@@ -17,7 +17,7 @@ exports.fetchOrdersByUser = async (req, res) => {
 exports.createOrder = async (req, res) => {
   const order = new Order(req.body);
   // here we have to update stocks;
-  console.log("orders", req.body);
+ 
   for (let item of order.items) {
     let product = await Product.findOne({ _id: item.product.id });
     product.$inc("stock", -1 * item.quantity);
@@ -74,7 +74,7 @@ exports.fetchAllOrders = async (req, res) => {
   }
 
   const totalDocs = await totalOrdersQuery.count().exec();
-  console.log({ totalDocs });
+
 
   if (req.query._page && req.query._limit) {
     const pageSize = req.query._limit;
